@@ -7,12 +7,8 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
-import static javafx.scene.text.Font.font;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import metodos.Juego;
-
 
 /**
  *
@@ -20,38 +16,27 @@ import metodos.Juego;
  */
 public class Principal extends javax.swing.JFrame {
 
-    
-    
-    
-     private int PosX;
-     private int PosY;
-     
-    
+    private int PosX;
+    private int PosY;
+
     public Principal() {
         setUndecorated(true);
-        setBackground(new Color(0,0,0,0));
-        initComponents(); 
+        setBackground(new Color(0, 0, 0, 0));
+        initComponents();
         this.setLocationRelativeTo(null);
-        
+
         Juego juego = new Juego();
         juego.DefaultProblemas();
-        
-        
+
         Inicio inicio = new Inicio(cont);
         Page(inicio, cont);
-        
-        
-    }
 
-    
+    }
 
     public JPanel getCont() {
         return cont;
     }
-        
-    
-   
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,18 +139,18 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
-       PosX=evt.getX();
-       PosY=evt.getY();
+        PosX = evt.getX();
+        PosY = evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
-        int x=evt.getXOnScreen();
-        int y=evt.getYOnScreen();
-        setLocation(x-PosX, y-PosY);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        setLocation(x - PosX, y - PosY);
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-      System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_closeMouseClicked
 
     private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
@@ -177,17 +162,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseExited
 
     private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
-          close.setForeground(Color.gray);
-          close.setFont(new Font("Arial Rounded MT", Font.BOLD ,18));
+        close.setForeground(Color.gray);
+        close.setFont(new Font("Arial Rounded MT", Font.BOLD, 18));
     }//GEN-LAST:event_closeMousePressed
 
     private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
-          close.setForeground(Color.lightGray);
-          close.setFont(new Font("Arial Rounded MT", Font.BOLD ,24));
+        close.setForeground(Color.lightGray);
+        close.setFont(new Font("Arial Rounded MT", Font.BOLD, 24));
     }//GEN-LAST:event_closeMouseReleased
 
     private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
-         this.setExtendedState(1);
+        this.setExtendedState(1);
     }//GEN-LAST:event_miniMouseClicked
 
     private void miniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseEntered
@@ -200,30 +185,24 @@ public class Principal extends javax.swing.JFrame {
 
     private void miniMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMousePressed
         mini.setForeground(Color.gray);
-        mini.setFont(new Font("Arial Rounded MT", Font.BOLD ,18));
+        mini.setFont(new Font("Arial Rounded MT", Font.BOLD, 18));
     }//GEN-LAST:event_miniMousePressed
 
     private void miniMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseReleased
         mini.setForeground(Color.lightGray);
-        mini.setFont(new Font("Arial Rounded MT", Font.BOLD ,24));
+        mini.setFont(new Font("Arial Rounded MT", Font.BOLD, 24));
     }//GEN-LAST:event_miniMouseReleased
-            
-    
-     private  void Page(JPanel i,JPanel c){  
-        i.setSize(c.getWidth(),c.getHeight());
-        i.setLocation(0,0);
-        
+
+    private void Page(JPanel i, JPanel c) {
+        i.setSize(c.getWidth(), c.getHeight());
+        i.setLocation(0, 0);
+
         c.removeAll();
         c.add(i);
         c.revalidate();
         c.repaint();
     }
-    
-    
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */

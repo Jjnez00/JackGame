@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import metodos.Juego;
+import metodos.Problema;
 
 /**
  *
@@ -21,63 +22,54 @@ public class ModoSelecionar extends javax.swing.JPanel {
     /**
      * Creates new form ModoSelecionar
      */
-    private JPanel c; 
-    
-    
-    public ModoSelecionar(JPanel c){
+    private final JPanel c;
+    private final Problema problema;
+    private int correcto;
+
+    public ModoSelecionar(JPanel c) {
         initComponents();
-        this.c=c;
-        
+        this.c = c;
+        this.problema = Juego.getInstancia().nextProblema();
+
         Image("/img/006.png", jack, 400, 400);
 
         Image("/img/008.png", f1, 60, 60);
         Image("/img/008.png", f2, 60, 60);
         Image("/img/008.png", f3, 60, 60);
 
-        f1.setVisible(false);
-        f2.setVisible(false);
-        f3.setVisible(false);
-        
-        
+        sumando1.setText(problema.getSumando1() + "");
+        sumando2.setText("?");
+        operador.setText(problema.getOperandor() + "");
+        respuesta.setText(problema.getRespuesta() + "");
+
+        JLabel posibles[] = {posible1, posible2, posible3};
+        correcto = Problema.getAleatorio(posibles.length);
+        for (int i = 0; i < posibles.length; i++) {
+            if (correcto == i) {
+                posibles[i].setText(problema.getSumando2() + "");
+            } else {
+                posibles[i].setText(Problema.getAleatorio(10) + "");
+            }
+        }
     }
-    
-    public void ComenzarJuego(){
+
+    public void ComenzarJuego() {
         Juego juego = new Juego();
-        int n =juego.getProblemasDeTipoSeleccion().size();
-        int re = (int) ((n)*Math.random());
-        int r = (int) ((4)*Math.random());
-        if (r==0) {
-            
-        }
-        if (r==1) {
-            
-        }
-        if (r==2) {
-            
-        }
-        if (r==3) {
-            
-        }
-        if (r==4) {
-            
-        }
+        int n = juego.getProblemasDeTipoSeleccion().size();
     }
-    
-    public int Random(){
-        return (int) ((100)* Math.random());
+
+    public int Random() {
+        return (int) ((100) * Math.random());
     }
-    
-    
-    
-    private void PosSelecion(JLabel a){
+
+    private void PosSelecion() {
         Image("/img/005.png", jack, 400, 400);
-        a.setVisible(true);
     }
-    private void DesSelecion(JLabel a){
+
+    private void DesSelecion() {
         Image("/img/006.png", jack, 400, 400);
-        a.setVisible(false);
     }
-    
+
     private void Image(String URL, JLabel l, int ancho, int alto) {
         Image j = Toolkit.getDefaultToolkit().getImage(getClass().getResource(URL));
         l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
@@ -91,6 +83,24 @@ public class ModoSelecionar extends javax.swing.JPanel {
         c.add(i);
         c.revalidate();
         c.repaint();
+    }
+
+    private void evaluar(int seleccion) {
+        if (correcto == seleccion) {
+            abrirCorrectoPag();
+        } else {
+            abrirIncorrectoPag();
+        }
+    }
+
+    private void abrirCorrectoPag() {
+        Acierto a = new Acierto(c);
+        Page(a, c);
+    }
+
+    private void abrirIncorrectoPag() {
+        Fallo f = new Fallo(c);
+        Page(f, c);
     }
 
     /**
@@ -163,6 +173,9 @@ public class ModoSelecionar extends javax.swing.JPanel {
         posible3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         posible3.setText("8");
         posible3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                posible3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 posible3MouseEntered(evt);
             }
@@ -260,38 +273,40 @@ public class ModoSelecionar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void posible1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible1MouseEntered
-         PosSelecion(f1); 
+        PosSelecion();
     }//GEN-LAST:event_posible1MouseEntered
 
     private void posible1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible1MouseExited
-       DesSelecion(f1);
+        DesSelecion();
     }//GEN-LAST:event_posible1MouseExited
 
     private void posible2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible2MouseEntered
-        PosSelecion(f2);
+        PosSelecion();
     }//GEN-LAST:event_posible2MouseEntered
 
     private void posible2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible2MouseExited
-       DesSelecion(f2);
+        DesSelecion();
     }//GEN-LAST:event_posible2MouseExited
 
     private void posible3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible3MouseEntered
-        PosSelecion(f3);
+        PosSelecion();
     }//GEN-LAST:event_posible3MouseEntered
 
     private void posible3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible3MouseExited
-        DesSelecion(f3);
+        DesSelecion();
     }//GEN-LAST:event_posible3MouseExited
 
     private void posible1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible1MouseClicked
-       Acierto a = new Acierto(c);
-        Page(a, c);
+        evaluar(0);
     }//GEN-LAST:event_posible1MouseClicked
 
     private void posible2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible2MouseClicked
-        Fallo f = new Fallo(c);
-        Page(f, c);
+        evaluar(1);
     }//GEN-LAST:event_posible2MouseClicked
+
+    private void posible3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible3MouseClicked
+        evaluar(2);
+    }//GEN-LAST:event_posible3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

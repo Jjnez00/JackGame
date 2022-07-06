@@ -25,8 +25,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        Juego juego = new Juego();
-        juego.DefaultProblemas();
+        Juego.getInstancia().defaultProblemas();
 
         Inicio inicio = new Inicio(cont);
         Page(inicio, cont);

@@ -43,7 +43,7 @@ public class Inicio extends javax.swing.JPanel {
         Image("/img/info.png", info, 50, 50);
         Image("/img/001.png", jack, 400, 400);
 
-        Image("/img/008.png",f1, 300, 80);
+        Image("/img/008.png", f1, 300, 80);
         Image("/img/008.png", f2, 300, 80);
         Image("/img/008.png", f3, 150, 50);
 
@@ -266,11 +266,11 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_addMouseClicked
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        Image("/img/add1.png",add, 60,60);
+        Image("/img/add1.png", add, 60, 60);
     }//GEN-LAST:event_addMouseEntered
 
     private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        Image("/img/add.png",add, 60,60);
+        Image("/img/add.png", add, 60, 60);
     }//GEN-LAST:event_addMouseExited
 
     private void ajustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustesMouseClicked
@@ -313,11 +313,11 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_infoMouseClicked
 
     private void infoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseEntered
-       Image("/img/info1.png", info, 50, 50);
+        Image("/img/info1.png", info, 50, 50);
     }//GEN-LAST:event_infoMouseEntered
 
     private void infoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseExited
-       Image("/img/info.png", info, 50, 50);
+        Image("/img/info.png", info, 50, 50);
     }//GEN-LAST:event_infoMouseExited
 
     private void Image(String URL, JLabel l, int ancho, int alto) {

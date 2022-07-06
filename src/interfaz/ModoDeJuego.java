@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import metodos.Juego;
 
 /**
  *
@@ -20,40 +21,33 @@ public class ModoDeJuego extends javax.swing.JPanel {
     /**
      * Creates new form ModoDeJuego
      */
-    
-    
-      private JPanel c;
-      
+    private JPanel c;
+
     public ModoDeJuego(JPanel c) {
         initComponents();
-        this.c=c;
-        
-        Image("/img/007.png",jack, 350,350);
-        Image("/img/009.png",f1, 250,200);
-        Image("/img/009.png",f2, 250,200);
-        
-        
+        this.c = c;
+
+        Image("/img/007.png", jack, 350, 350);
+        Image("/img/009.png", f1, 250, 200);
+        Image("/img/009.png", f2, 250, 200);
+
     }
 
-    
-    
-    private  void Page(JPanel i,JPanel c){  
-        i.setSize(c.getWidth(),c.getHeight());
-        i.setLocation(0,0);
-        
+    private void Page(JPanel i, JPanel c) {
+        i.setSize(c.getWidth(), c.getHeight());
+        i.setLocation(0, 0);
+
         c.removeAll();
         c.add(i);
         c.revalidate();
         c.repaint();
     }
-    
-    private void Image (String URL, JLabel l,int ancho,int alto){
-       Image j = Toolkit.getDefaultToolkit().getImage(getClass().getResource(URL));
-       l.setIcon(new ImageIcon(j.getScaledInstance(ancho,alto,Image.SCALE_SMOOTH)));
+
+    private void Image(String URL, JLabel l, int ancho, int alto) {
+        Image j = Toolkit.getDefaultToolkit().getImage(getClass().getResource(URL));
+        l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
-    
-    
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

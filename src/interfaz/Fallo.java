@@ -22,18 +22,16 @@ public class Fallo extends javax.swing.JPanel {
      * Creates new form Acierto
      */
     private JPanel c;
-    
-    
+
     public Fallo(JPanel c) {
         initComponents();
-        this.c=c;
-        
-          Image("/img/003.png", jack, 700, 500);
-          Image("/img/008.png", continuar, 210, 60);
-        
+        this.c = c;
+
+        Image("/img/003.png", jack, 700, 500);
+        Image("/img/008.png", continuar, 210, 60);
+
     }
-      
-    
+
     private void Image(String URL, JLabel l, int ancho, int alto) {
         Image j = Toolkit.getDefaultToolkit().getImage(getClass().getResource(URL));
         l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
@@ -102,7 +100,7 @@ public class Fallo extends javax.swing.JPanel {
     private void continuarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseEntered
         continuar.setFont(new Font("Arial Rounded MT", Font.BOLD, 48));
         Image("/img/008.png", continuar, 300, 90);
-        
+
     }//GEN-LAST:event_continuarMouseEntered
 
     private void continuarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseExited

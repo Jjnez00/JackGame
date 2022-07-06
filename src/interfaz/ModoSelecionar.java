@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import src.metodos.Juego;
+import metodos.Juego;
 
 /**
  *
@@ -122,7 +122,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
         tiempo3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
-        setLayout(new AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         posible1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
         posible1.setForeground(new java.awt.Color(255, 255, 255));

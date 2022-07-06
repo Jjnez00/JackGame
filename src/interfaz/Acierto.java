@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author 
+ * @author Josue
  */
 public class Acierto extends javax.swing.JPanel {
 
@@ -64,7 +64,7 @@ public class Acierto extends javax.swing.JPanel {
         jack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
-        setLayout(new AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         continuar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         continuar.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,15 +98,6 @@ public class Acierto extends javax.swing.JPanel {
         jack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(jack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 460));
     }// </editor-fold>//GEN-END:initComponents
-
-
-    private void setLayout(AbsoluteLayout absoluteLayout) {
-    }
-
-
-    private void extracted() {
-        continuar.setForeground(new java.awt.Color(255, 255, 255));
-    }
 
     private void continuarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseEntered
         continuar.setFont(new Font("Arial Rounded MT", Font.BOLD, 48));

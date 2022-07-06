@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -74,7 +74,7 @@ public class ModoDeJuego extends javax.swing.JPanel {
         f2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
-        setLayout(new AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atras.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
         atras.setForeground(new java.awt.Color(255, 255, 255));

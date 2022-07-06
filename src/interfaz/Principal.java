@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
 import java.awt.Color;
 import java.awt.Font;
-
+import java.util.ArrayList;
+import static javafx.scene.text.Font.font;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import src.metodos.Juego;
+import metodos.Juego;
 
 
 /**
@@ -63,10 +64,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(2, 168, 104));
-        jPanel1.setLayout(new AbsoluteLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(149, 184, 246));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -79,7 +80,7 @@ public class Principal extends javax.swing.JFrame {
                 jPanel2MousePressed(evt);
             }
         });
-        jPanel2.setLayout(new AbsoluteLayout());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mini.setBackground(java.awt.Color.lightGray);
         mini.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N

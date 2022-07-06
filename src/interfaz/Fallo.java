@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -64,7 +64,7 @@ public class Fallo extends javax.swing.JPanel {
         jack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
-        setLayout(new AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         continuar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         continuar.setForeground(new java.awt.Color(255, 255, 255));

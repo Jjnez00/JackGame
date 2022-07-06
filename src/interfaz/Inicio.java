@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.interfaz;
+package interfaz;
 
+import com.sun.imageio.plugins.jpeg.JPEG;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -77,7 +77,7 @@ public class Inicio extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(149, 184, 246));
         setPreferredSize(new java.awt.Dimension(940, 440));
-        setLayout(new AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));

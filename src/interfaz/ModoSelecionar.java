@@ -23,19 +23,24 @@ public class ModoSelecionar extends javax.swing.JPanel {
      * Creates new form ModoSelecionar
      */
     private final JPanel c;
-    private final Problema problema;
+    private Problema problema;
     private int correcto;
 
     public ModoSelecionar(JPanel c) {
         initComponents();
         this.c = c;
-        this.problema = Juego.getInstancia().nextProblema();
 
         Image("/img/006.png", jack, 400, 400);
 
         Image("/img/008.png", f1, 60, 60);
         Image("/img/008.png", f2, 60, 60);
         Image("/img/008.png", f3, 60, 60);
+        
+        cargarProblema();
+    }
+    
+    public void cargarProblema() {
+        problema = Juego.getInstancia().nextProblema();
 
         sumando1.setText(problema.getSumando1() + "");
         sumando2.setText("?");
@@ -252,6 +257,11 @@ public class ModoSelecionar extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("omitir");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 100, 60));
 
         f1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
@@ -307,6 +317,15 @@ public class ModoSelecionar extends javax.swing.JPanel {
     private void posible3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posible3MouseClicked
         evaluar(2);
     }//GEN-LAST:event_posible3MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        if (!Juego.getInstancia().isJuegoTerminado()) {
+            Juego.getInstancia().nextProblema();
+            cargarProblema();
+        } else {
+            // todo: abrir ranking
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

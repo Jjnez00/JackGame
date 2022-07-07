@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import metodos.Juego;
 
 /**
  *
@@ -70,6 +71,9 @@ public class Fallo extends javax.swing.JPanel {
         continuar.setText("Continuar");
         continuar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         continuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                continuarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 continuarMouseEntered(evt);
             }
@@ -107,6 +111,18 @@ public class Fallo extends javax.swing.JPanel {
         continuar.setFont(new Font("Arial Rounded MT", Font.BOLD, 36));
         Image("/img/008.png", continuar, 210, 60);
     }//GEN-LAST:event_continuarMouseExited
+
+    private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
+        // TODO add your handling code here:
+        if (Juego.getInstancia().isJuegoTerminado()) {
+            // todo: enviar a ranking
+        } else {
+            // todo: abrir ModoSeleccionar.java
+            ModoSelecionar m = new ModoSelecionar(c);
+            Page(m, c);
+        }
+
+    }//GEN-LAST:event_continuarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

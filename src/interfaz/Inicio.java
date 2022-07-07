@@ -5,7 +5,6 @@
  */
 package interfaz;
 
-import com.sun.imageio.plugins.jpeg.JPEG;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -21,7 +20,7 @@ public class Inicio extends javax.swing.JPanel {
 
     private JPanel c;
     /**
-     * Creates new form Inicip
+     * Creates new form Init
      */
     private boolean visible = false;
 

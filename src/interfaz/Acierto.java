@@ -120,6 +120,8 @@ public class Acierto extends javax.swing.JPanel {
             // todo: enviar a ranking
         } else {
             // todo: abrir ModoSeleccionar.java
+            ModoSelecionar m = new ModoSelecionar(c);
+            Page(m, c);
         }
     }//GEN-LAST:event_continuarMouseClicked
 

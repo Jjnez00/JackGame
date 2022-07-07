@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Juego {
 
     private static Juego instancia = null;
-    
+
     private int puntos = 0;
     private int problemaActual = 0;
     private ArrayList<Player> posisiones = new ArrayList<>();
@@ -74,6 +74,10 @@ public class Juego {
 
     public void setProblemasDeTipoPoner(ArrayList<Problema> ProblemasDeTipoPoner) {
         this.ProblemasDeTipoPoner = ProblemasDeTipoPoner;
+    }
+
+    public boolean isJuegoTerminado() {
+        return juegoTerminado;
     }
 
     public void defaultProblemas() {

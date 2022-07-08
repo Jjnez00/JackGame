@@ -264,6 +264,8 @@ public class Inicio extends javax.swing.JPanel {
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         // TODO add your handling code here:
+        CrearProblema m = new CrearProblema(c);
+        Page(m, c);
     }//GEN-LAST:event_addMouseClicked
 
     private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered

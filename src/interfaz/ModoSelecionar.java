@@ -56,6 +56,9 @@ public class ModoSelecionar extends javax.swing.JPanel {
                 posibles[i].setText(Problema.getAleatorio(10) + "");
             }
         }
+
+        numProblema.setText(Juego.getInstancia().getProblemaActual() + "");
+        ctdadDePuntos.setText(Juego.getInstancia().getPuntos() + "");
     }
 
     public void ComenzarJuego() {

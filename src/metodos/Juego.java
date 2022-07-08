@@ -48,6 +48,19 @@ public class Juego {
         return instancia;
     }
     
+    public Problema getProblemaActualDelListado() {
+        if (tipoJuego == 0) {
+            return problemasDeTipoSeleccion.get(problemaActual-1);
+        } else {
+            return ProblemasDeTipoPoner.get(problemaActual-1);
+        }
+    }
+    
+    public void addProblema(Problema p) {
+        problemas.add(p);
+        salvarProblemas();
+    }
+    
     public void cargarProblemas() {
         try ( FileInputStream in = new FileInputStream("problemas.txt");  ObjectInputStream s = new ObjectInputStream(in)) {
             problemas = (ArrayList<Problema>) s.readObject();

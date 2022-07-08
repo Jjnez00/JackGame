@@ -31,6 +31,7 @@ public class Fallo extends javax.swing.JPanel {
         Image("/img/003.png", jack, 700, 500);
         Image("/img/008.png", continuar, 210, 60);
 
+        jLabel1.setText("La soluci'on correcta es: " + Juego.getInstancia().getProblemaActualDelListado().getSumando2());
     }
 
     private void Image(String URL, JLabel l, int ancho, int alto) {
@@ -61,6 +62,7 @@ public class Fallo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jack = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,6 +101,9 @@ public class Fallo extends javax.swing.JPanel {
         jack.setForeground(new java.awt.Color(250, 95, 73));
         jack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(jack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 460));
+
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void continuarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseEntered
@@ -119,7 +124,6 @@ public class Fallo extends javax.swing.JPanel {
             Juego.getInstancia().terminarJuego();
             ModoRanking m = new ModoRanking(c);
             Page(m, c);
-            
         } else {
             JPanel ms;
             if (Juego.getInstancia().getTipoJuego() == 0) {
@@ -135,6 +139,7 @@ public class Fallo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel continuar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jack;

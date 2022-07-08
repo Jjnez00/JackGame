@@ -22,7 +22,7 @@ public class Fallo extends javax.swing.JPanel {
     /**
      * Creates new form Acierto
      */
-    private JPanel c;
+    private final JPanel c;
 
     public Fallo(JPanel c) {
         initComponents();
@@ -116,6 +116,9 @@ public class Fallo extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (Juego.getInstancia().isJuegoTerminado()) {
             // todo: enviar a ranking
+            ModoRanking m = new ModoRanking(c);
+            Page(m, c);
+            
         } else {
             // todo: abrir ModoSeleccionar.java
             ModoSelecionar m = new ModoSelecionar(c);

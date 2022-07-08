@@ -7,8 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Queue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,11 +30,16 @@ public class Ranking implements Serializable {
 
     public void addElemento(String nombre, int puntos) {
         elementos.add(new Elemento(nombre, puntos));
+        Collections.sort(elementos, (t, t1) -> {
+            return t1.getPuntos() - t.getPuntos(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/LambdaBody
+        });
+        while (elementos.size() > 5) {
+            elementos.remove(elementos.size() - 1);
+        }
     }
 
     public void cargarRanking() {
-        try ( FileInputStream in = new FileInputStream("ranking.txt");
-                ObjectInputStream s = new ObjectInputStream(in)) {
+        try ( FileInputStream in = new FileInputStream("ranking.txt");  ObjectInputStream s = new ObjectInputStream(in)) {
             elementos = (List<Elemento>) s.readObject();
             System.out.println("pepe");
         } catch (ClassNotFoundException e) {
@@ -53,6 +58,15 @@ public class Ranking implements Serializable {
             error.printStackTrace();
         }
         cargarRanking();
+    }
+
+    public String getRanking() {
+        String r = "";
+        for (int i = 0; i < elementos.size(); i++) {
+            Elemento elemento = elementos.get(i);
+            r += String.format("%s - %d\n", elemento.getNombre(), elemento.getPuntos());
+        }
+        return r;
     }
 
     public class Elemento implements Serializable {

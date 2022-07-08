@@ -34,6 +34,9 @@ public class Principal extends javax.swing.JFrame {
 //        Ranking.getInstance().addElemento("juanito", 20);
 //        Ranking.getInstance().addElemento("ana", 50);
 //        Ranking.getInstance().addElemento("pepe", 10);
+//        Ranking.getInstance().addElemento("juito", 40);
+//        Ranking.getInstance().addElemento("an", 50);
+//        Ranking.getInstance().addElemento("g", 5);
 //        Ranking.getInstance().salvarRanking();
         Ranking.getInstance().cargarRanking();
     }

@@ -10,7 +10,6 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import metodos.Juego;
 
 /**
  *
@@ -21,7 +20,8 @@ public class ModoDeJuego extends javax.swing.JPanel {
     /**
      * Creates new form ModoDeJuego
      */
-    private JPanel c;
+    private final JPanel c;
+    
 
     public ModoDeJuego(JPanel c) {
         initComponents();
@@ -33,7 +33,7 @@ public class ModoDeJuego extends javax.swing.JPanel {
 
     }
 
-    private void Page(JPanel i, JPanel c) {
+    private void page(JPanel i, JPanel c) {
         i.setSize(c.getWidth(), c.getHeight());
         i.setLocation(0, 0);
 
@@ -90,7 +90,7 @@ public class ModoDeJuego extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Tienes una ronda de 10 preguntas por cada acierto ganas 5 puntos en caso  ");
+        jLabel4.setText("Tienes una ronda de 5 preguntas por cada acierto ganas 5 puntos en caso  ");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 940, 30));
 
         jack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,7 +106,7 @@ public class ModoDeJuego extends javax.swing.JPanel {
         f.setForeground(new java.awt.Color(255, 255, 255));
         f.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         f.setText("Modo");
-        f.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        f.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         f.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         f.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,8 +118,8 @@ public class ModoDeJuego extends javax.swing.JPanel {
         f1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         f1.setForeground(new java.awt.Color(255, 255, 255));
         f1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        f1.setText("Seleccinar");
-        f1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        f1.setText("Seleccionar");
+        f1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         f1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(f1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 290, 200));
 
@@ -127,28 +127,40 @@ public class ModoDeJuego extends javax.swing.JPanel {
         fs.setForeground(new java.awt.Color(255, 255, 255));
         fs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fs.setText("Modo");
-        fs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fsMouseClicked(evt);
+            }
+        });
         add(fs, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 290, 190));
 
         f2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
         f2.setForeground(new java.awt.Color(255, 255, 255));
         f2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         f2.setText("Poner");
-        f2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        f2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         f2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(f2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 290, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasMouseClicked
         Inicio i = new Inicio(c);
-        Page(i, c);
+        page(i, c);
     }//GEN-LAST:event_atrasMouseClicked
 
     private void fMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fMouseClicked
-        ModoSelecionar m = new ModoSelecionar(c);
-        Page(m, c);
+        ModoSelecionar ms = new ModoSelecionar(c);
+        page(ms, c);
     }//GEN-LAST:event_fMouseClicked
+
+    private void fsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fsMouseClicked
+        // TODO add your handling code here:
+        ModoPoner mp = new ModoPoner(c);
+        page(mp, c);
+        
+    }//GEN-LAST:event_fsMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

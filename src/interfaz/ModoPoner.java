@@ -1,32 +1,97 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template */
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package interfaz;
-
-import javax.swing.JPanel;
-import metodos.Problema;
 
 /**
  *
  * @author kevin
  */
-public class ModoPoner extends javax.swing.JFrame {
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import metodos.Juego;
+import metodos.Problema;
+
+public class ModoPoner extends javax.swing.JPanel {
 
     /**
-     * Creates new form ModoPoner
+     * Creates new form ModoPonerr
      */
-    private final JPanel c; 
+    private final JPanel c;
+    private Problema problema;
+    private int correcto;
+
+    private void Image(String URL, JLabel l, int ancho, int alto) {
+        Image j = Toolkit.getDefaultToolkit().getImage(getClass().getResource(URL));
+        l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
+    }
 
     public ModoPoner(JPanel c) {
-        initComponents();
         this.c = c;
-    }
-
-    private ModoPoner() {
         initComponents();
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        Image("/img/006.png", jack, 400, 400);
+
+        cargarProblema();
     }
 
+    public void cargarProblema() {
+        problema = Juego.getInstancia().nextProblema();
+
+        sumando1.setText(problema.getSumando1() + "");
+        sumando2.setText("?");
+        operador.setText(problema.getOperandor() + "");
+        respuesta.setText(problema.getRespuesta() + "");
+
+    }
+
+    private void page(JPanel i, JPanel c) {
+        i.setSize(c.getWidth(), c.getHeight());
+        i.setLocation(0, 0);
+
+        c.removeAll();
+        c.add(i);
+        c.revalidate();
+        c.repaint();
+    }
+
+    private void PosSelecion() {
+        Image("/img/005.png", jack, 400, 400);
+    }
+
+    private void DesSelecion() {
+        Image("/img/006.png", jack, 400, 400);
+    }
+
+    public void ComenzarJuego() {
+        Juego juego = new Juego();
+        int n = juego.getProblemasDeTipoPoner().size();
+    }
+
+    private void evaluar() {
+        correcto = Integer.parseInt(posible1.getText());
+        if (correcto == problema.getSumando2()) {
+            abrirCorrectoPag();
+        } else {
+            abrirIncorrectoPag();
+        }
+    }
+
+    private void abrirCorrectoPag() {
+        Juego.getInstancia().SistemaDePuntos(5);
+        Acierto a = new Acierto(c);
+        page(a, c);
+    }
+
+    private void abrirIncorrectoPag() {
+        Juego.getInstancia().SistemaDePuntos(2);
+        Fallo f = new Fallo(c);
+        page(f, c);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,72 +102,29 @@ public class ModoPoner extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        salir = new javax.swing.JLabel();
-        texto = new javax.swing.JLabel();
-        respuesta = new javax.swing.JLabel();
-        tiempo = new javax.swing.JLabel();
-        omitir = new javax.swing.JLabel();
+        posible1 = new javax.swing.JTextField();
+        jack = new javax.swing.JLabel();
         puntos = new javax.swing.JLabel();
         operador = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         sumando2 = new javax.swing.JLabel();
         sumando1 = new javax.swing.JLabel();
         sumando3 = new javax.swing.JLabel();
+        salir = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        TextResp = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
+        acceptar = new javax.swing.JButton();
+        respuesta = new javax.swing.JLabel();
+        omitir = new javax.swing.JLabel();
+        puntero = new javax.swing.JLabel();
 
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("=");
+        setBackground(new java.awt.Color(149, 184, 246));
 
-        jButton1.setText("jButton1");
+        posible1.setBackground(new java.awt.Color(149, 184, 246));
+        posible1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        posible1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("jButton2");
-
-        jButton4.setText("jButton4");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(149, 184, 246));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        salir.setForeground(new java.awt.Color(255, 255, 255));
-        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        salir.setText("salir");
-        salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salirMouseClicked(evt);
-            }
-        });
-
-        texto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
-        texto.setForeground(new java.awt.Color(255, 255, 255));
-        texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        texto.setText("Escribe la respuesta correcta");
-
-        respuesta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
-        respuesta.setForeground(new java.awt.Color(255, 255, 255));
-        respuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        respuesta.setText("10");
-
-        tiempo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        tiempo.setForeground(new java.awt.Color(255, 255, 255));
-        tiempo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tiempo.setText("0");
-
-        omitir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        omitir.setForeground(new java.awt.Color(255, 255, 255));
-        omitir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        omitir.setText("omitir");
+        jack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/006.png"))); // NOI18N
 
         puntos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         puntos.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,177 +156,184 @@ public class ModoPoner extends javax.swing.JFrame {
         sumando3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sumando3.setText("?");
 
+        salir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salir.setText("salir");
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMouseClicked(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("=");
 
-        jButton3.setBackground(new java.awt.Color(102, 153, 255));
-        jButton3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("aceptar");
+        texto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 36)); // NOI18N
+        texto.setForeground(new java.awt.Color(255, 255, 255));
+        texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        texto.setText("Escribe la respuesta correcta");
 
-        TextResp.setBackground(new java.awt.Color(149, 184, 246));
-        TextResp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        TextResp.setForeground(new java.awt.Color(255, 255, 255));
+        acceptar.setBackground(new java.awt.Color(102, 153, 255));
+        acceptar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        acceptar.setForeground(new java.awt.Color(255, 255, 255));
+        acceptar.setText("aceptar");
+        acceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                acceptarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                acceptarMouseEntered(evt);
+            }
+        });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/006.png"))); // NOI18N
+        respuesta.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
+        respuesta.setForeground(new java.awt.Color(255, 255, 255));
+        respuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        respuesta.setText("10");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(omitir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        omitir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        omitir.setForeground(new java.awt.Color(255, 255, 255));
+        omitir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        omitir.setText("omitir");
+        omitir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                omitirMouseClicked(evt);
+            }
+        });
+
+        puntero.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        puntero.setForeground(new java.awt.Color(255, 255, 255));
+        puntero.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        puntero.setText("0");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jack, javax.swing.GroupLayout.PREFERRED_SIZE, 228, Short.MAX_VALUE)
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(sumando3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(sumando1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(operador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(sumando2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TextResp, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(posible1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(249, 249, 249))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jButton3)))
-                        .addGap(249, 249, 249))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(acceptar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(omitir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))))
+                        .addGap(125, 125, 125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(puntero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(puntero, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jack, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(omitir, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(sumando3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sumando2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(operador, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sumando1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(109, 109, 109)
-                                .addComponent(TextResp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(posible1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(jButton3)))
-                .addContainerGap())
+                        .addComponent(acceptar)))
+                .addGap(36, 36, 36))
         );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
-        JPanel c = null;
         ModoDeJuego m = new ModoDeJuego(c);
-        Page(m, c);
+        page(m, c);
     }//GEN-LAST:event_salirMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModoPoner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModoPoner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModoPoner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModoPoner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void acceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptarMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_acceptarMouseEntered
+
+    private void omitirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_omitirMouseClicked
+        // TODO add your handling code here:
+        if (!Juego.getInstancia().isJuegoTerminado()) {
+            Juego.getInstancia().nextProblema();
+            cargarProblema();
+        } else {
+            // todo: abrir ranking
+            ModoRanking m = new ModoRanking(c);
+            page(m, c);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_omitirMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModoPoner().setVisible(true);
-            }
-        });
-    }
-
+    private void acceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptarMouseClicked
+        // TODO add your handling code here:
+        evaluar();
+    }//GEN-LAST:event_acceptarMouseClicked
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TextResp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton acceptar;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jack;
     private javax.swing.JLabel omitir;
     private javax.swing.JLabel operador;
+    private javax.swing.JTextField posible1;
+    private javax.swing.JLabel puntero;
     private javax.swing.JLabel puntos;
     private javax.swing.JLabel respuesta;
     private javax.swing.JLabel salir;
@@ -312,10 +341,6 @@ public class ModoPoner extends javax.swing.JFrame {
     private javax.swing.JLabel sumando2;
     private javax.swing.JLabel sumando3;
     private javax.swing.JLabel texto;
-    private javax.swing.JLabel tiempo;
     // End of variables declaration//GEN-END:variables
 
-    private void Page(ModoDeJuego m, JPanel c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

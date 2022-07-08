@@ -40,7 +40,7 @@ public class Acierto extends javax.swing.JPanel {
         l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
 
-    private void Page(JPanel i, JPanel c) {
+    private void page(JPanel i, JPanel c) {
         i.setSize(c.getWidth(), c.getHeight());
         i.setLocation(0, 0);
 
@@ -118,10 +118,14 @@ public class Acierto extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (Juego.getInstancia().isJuegoTerminado()) {
             // todo: enviar a ranking
+            ModoRanking m = new ModoRanking(c);
+            page(m, c);
+            
+            
         } else {
-            // todo: abrir ModoSeleccionar.java
-            ModoSelecionar m = new ModoSelecionar(c);
-            Page(m, c);
+            // todo: abrir Modo Correspondiente.java
+            ModoSelecionar ms = new ModoSelecionar(c);
+            page(ms,c);
         }
     }//GEN-LAST:event_continuarMouseClicked
 

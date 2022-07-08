@@ -80,7 +80,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
         l.setIcon(new ImageIcon(j.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
 
-    private void Page(JPanel i, JPanel c) {
+    private void page(JPanel i, JPanel c) {
         i.setSize(c.getWidth(), c.getHeight());
         i.setLocation(0, 0);
 
@@ -99,13 +99,15 @@ public class ModoSelecionar extends javax.swing.JPanel {
     }
 
     private void abrirCorrectoPag() {
+        Juego.getInstancia().SistemaDePuntos(5);
         Acierto a = new Acierto(c);
-        Page(a, c);
+        page(a, c);
     }
 
     private void abrirIncorrectoPag() {
+        Juego.getInstancia().SistemaDePuntos(2);    
         Fallo f = new Fallo(c);
-        Page(f, c);
+        page(f, c);
     }
 
     /**
@@ -131,7 +133,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
         sumando1 = new javax.swing.JLabel();
         f2 = new javax.swing.JLabel();
         f3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        omitir = new javax.swing.JLabel();
         f1 = new javax.swing.JLabel();
         tiempo2 = new javax.swing.JLabel();
         tiempo3 = new javax.swing.JLabel();
@@ -212,6 +214,11 @@ public class ModoSelecionar extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("salir");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 100, 60));
 
         operador.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
@@ -253,16 +260,16 @@ public class ModoSelecionar extends javax.swing.JPanel {
         f3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(f3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 80, 60));
 
-        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("omitir");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        omitir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        omitir.setForeground(new java.awt.Color(255, 255, 255));
+        omitir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        omitir.setText("omitir");
+        omitir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                omitirMouseClicked(evt);
             }
         });
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 100, 60));
+        add(omitir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 100, 60));
 
         f1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
         f1.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,24 +325,32 @@ public class ModoSelecionar extends javax.swing.JPanel {
         evaluar(2);
     }//GEN-LAST:event_posible3MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void omitirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_omitirMouseClicked
         if (!Juego.getInstancia().isJuegoTerminado()) {
             Juego.getInstancia().nextProblema();
             cargarProblema();
         } else {
             // todo: abrir ranking
+            ModoRanking m = new ModoRanking(c);
+            page(m, c);
         }
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_omitirMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        ModoDeJuego j = new ModoDeJuego(c);
+        page(j, c);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel f1;
     private javax.swing.JLabel f2;
     private javax.swing.JLabel f3;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jack;
+    private javax.swing.JLabel omitir;
     private javax.swing.JLabel operador;
     private javax.swing.JLabel posible1;
     private javax.swing.JLabel posible2;

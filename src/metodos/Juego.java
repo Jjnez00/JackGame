@@ -22,7 +22,7 @@ public class Juego {
     private ArrayList<Problema> ProblemasDeTipoPoner = new ArrayList<>();
     private boolean juegoTerminado = false;
     private int tipoJuego = 0;
-
+    
     public static Juego getInstancia() {
         if (instancia == null) {
             instancia = new Juego();
@@ -44,6 +44,10 @@ public class Juego {
         return p;
     }
 
+    public int setTipoDeJuego(){
+        return tipoJuego;
+    }
+    
     public int getPuntos() {
         return puntos;
     }
@@ -81,10 +85,10 @@ public class Juego {
     }
 
     public void defaultProblemas() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             problemasDeTipoSeleccion.add(new Problema());
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             ProblemasDeTipoPoner.add(new Problema());
         }
     }
@@ -104,13 +108,8 @@ public class Juego {
         posisiones.add(p);
     }
 
-    public void SistemaDePuntos(int n) {
-        if (n == 1) {
-            puntos += 5;
-        }
-        if (n == 0) {
-            puntos += 2;
-        }
+    public void SistemaDePuntos(int puntosGanados) {
+        puntos += puntosGanados;
     }
 
     public void RestPuntos() {

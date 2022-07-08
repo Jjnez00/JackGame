@@ -231,8 +231,8 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_salirMouseClicked
 
     private void jugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jugarMouseClicked
-        ModoDeJuego m = new ModoDeJuego(c);
-        Page(m, c);
+        Registrar r = new Registrar(c);
+        Page(r, c);
 
     }//GEN-LAST:event_jugarMouseClicked
 
@@ -248,6 +248,8 @@ public class Inicio extends javax.swing.JPanel {
 
     private void posisionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posisionesMouseClicked
         // TODO add your handling code here:
+        ModoRanking m = new ModoRanking(c);
+        Page(m, c);
     }//GEN-LAST:event_posisionesMouseClicked
 
     private void posisionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_posisionesMouseEntered

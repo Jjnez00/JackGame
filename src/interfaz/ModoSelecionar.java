@@ -330,7 +330,6 @@ public class ModoSelecionar extends javax.swing.JPanel {
 
     private void omitirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_omitirMouseClicked
         if (!Juego.getInstancia().isJuegoTerminado()) {
-            Juego.getInstancia().nextProblema();
             cargarProblema();
         } else {
             Juego.getInstancia().terminarJuego();

@@ -115,8 +115,11 @@ public class Juego {
         } else {
             problemas = ProblemasDeTipoPoner;
         }
-        Problema p = problemas.get(problemaActual++);
-        if (problemaActual == problemas.size()) {
+        Problema p = null;
+        if (problemaActual < problemas.size()) {
+            p = problemas.get(problemaActual++);
+        }
+        if (problemaActual >= problemas.size()) {
             juegoTerminado = true;
         }
         return p;

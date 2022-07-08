@@ -8,7 +8,6 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JPanel;
-import metodos.Juego;
 import metodos.Ranking;
 
 /**

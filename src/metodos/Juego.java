@@ -109,6 +109,10 @@ public class Juego {
         return p;
     }
 
+    public int getProblemaActual() {
+        return problemaActual;
+    }
+
     public int getTipoJuego() {
         return tipoJuego;
     }

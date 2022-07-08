@@ -124,7 +124,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
         posible3 = new javax.swing.JLabel();
         tiempo1 = new javax.swing.JLabel();
         respuesta = new javax.swing.JLabel();
-        tiempo = new javax.swing.JLabel();
+        ctdadDePuntos = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         operador = new javax.swing.JLabel();
         jack = new javax.swing.JLabel();
@@ -135,7 +135,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
         f3 = new javax.swing.JLabel();
         omitir = new javax.swing.JLabel();
         f1 = new javax.swing.JLabel();
-        tiempo2 = new javax.swing.JLabel();
+        numProblema = new javax.swing.JLabel();
         tiempo3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(149, 184, 246));
@@ -204,11 +204,11 @@ public class ModoSelecionar extends javax.swing.JPanel {
         respuesta.setText("10");
         add(respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 80, 60));
 
-        tiempo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        tiempo.setForeground(new java.awt.Color(255, 255, 255));
-        tiempo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        tiempo.setText("0");
-        add(tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 80, 60));
+        ctdadDePuntos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ctdadDePuntos.setForeground(new java.awt.Color(255, 255, 255));
+        ctdadDePuntos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ctdadDePuntos.setText("0");
+        add(ctdadDePuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 80, 60));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,11 +276,11 @@ public class ModoSelecionar extends javax.swing.JPanel {
         f1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(f1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 80, 60));
 
-        tiempo2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
-        tiempo2.setForeground(new java.awt.Color(255, 255, 255));
-        tiempo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tiempo2.setText("25");
-        add(tiempo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 70));
+        numProblema.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 48)); // NOI18N
+        numProblema.setForeground(new java.awt.Color(255, 255, 255));
+        numProblema.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numProblema.setText("25");
+        add(numProblema, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 120, 70));
 
         tiempo3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         tiempo3.setForeground(new java.awt.Color(255, 255, 255));
@@ -344,12 +344,14 @@ public class ModoSelecionar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ctdadDePuntos;
     private javax.swing.JLabel f1;
     private javax.swing.JLabel f2;
     private javax.swing.JLabel f3;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jack;
+    private javax.swing.JLabel numProblema;
     private javax.swing.JLabel omitir;
     private javax.swing.JLabel operador;
     private javax.swing.JLabel posible1;
@@ -358,9 +360,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
     private javax.swing.JLabel respuesta;
     private javax.swing.JLabel sumando1;
     private javax.swing.JLabel sumando2;
-    private javax.swing.JLabel tiempo;
     private javax.swing.JLabel tiempo1;
-    private javax.swing.JLabel tiempo2;
     private javax.swing.JLabel tiempo3;
     // End of variables declaration//GEN-END:variables
 }

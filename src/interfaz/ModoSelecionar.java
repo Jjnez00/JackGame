@@ -330,7 +330,7 @@ public class ModoSelecionar extends javax.swing.JPanel {
             Juego.getInstancia().nextProblema();
             cargarProblema();
         } else {
-            // todo: abrir ranking
+            Juego.getInstancia().terminarJuego();
             ModoRanking m = new ModoRanking(c);
             page(m, c);
         }

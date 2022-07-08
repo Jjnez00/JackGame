@@ -5,7 +5,13 @@
  */
 package metodos;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,16 +24,75 @@ public class Juego {
     private int puntos = 0;
     private int problemaActual = 0;
     private ArrayList<Player> posisiones = new ArrayList<>();
+    private ArrayList<Problema> problemas = new ArrayList<>();
     private ArrayList<Problema> problemasDeTipoSeleccion = new ArrayList<>();
     private ArrayList<Problema> ProblemasDeTipoPoner = new ArrayList<>();
     private boolean juegoTerminado = false;
     private int tipoJuego = 0;
+    private String jugadorNombre = "";
+
+    public Juego() {
+        cargarProblemas();
+        if (problemas.isEmpty()) {
+            for (int i = 0; i < 6; i++) {
+                problemas.add(new Problema());
+            }
+            salvarProblemas();
+        }
+    }
     
     public static Juego getInstancia() {
         if (instancia == null) {
             instancia = new Juego();
         }
         return instancia;
+    }
+    
+    public void cargarProblemas() {
+        try ( FileInputStream in = new FileInputStream("problemas.txt");  ObjectInputStream s = new ObjectInputStream(in)) {
+            problemas = (ArrayList<Problema>) s.readObject();
+        } catch (ClassNotFoundException e) {
+        } catch (IOException ex) {
+        }
+    }
+    
+    public void salvarProblemas() {
+        try ( FileOutputStream f = new FileOutputStream("problemas.txt");  ObjectOutputStream s = new ObjectOutputStream(f)) {
+            s.writeObject(problemas);
+            s.close();
+            f.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+        cargarProblemas();
+    }
+
+    public void terminarJuego() {
+        Ranking.getInstance().addElemento(jugadorNombre, puntos);
+    }
+    
+    public void iniciarGame() {
+        problemaActual = 0;
+        juegoTerminado = false;
+        
+        desordenarArray();
+        
+        problemasDeTipoSeleccion.clear();
+        ProblemasDeTipoPoner.clear();
+        for (int i = 0; i < 5; i++) {
+            problemasDeTipoSeleccion.add(problemas.get(i));
+            ProblemasDeTipoPoner.add(problemas.get(i));
+        }
+    }
+    
+    public void desordenarArray() {
+        ArrayList<Problema> tmp = new ArrayList<>();
+        while(!problemas.isEmpty()) {
+            int pos = Problema.getAleatorio(problemas.size());
+            tmp.add(problemas.get(pos));
+            problemas.remove(pos);
+        }
+        problemas = tmp;
     }
 
     public Problema nextProblema() {
@@ -44,13 +109,28 @@ public class Juego {
         return p;
     }
 
-    public int setTipoDeJuego(){
+    public int getTipoJuego() {
         return tipoJuego;
     }
+
+    public void setTipoJuego(int tipoJuego) {
+        this.tipoJuego = tipoJuego;
+    }
+    
     
     public int getPuntos() {
         return puntos;
     }
+
+    public String getJugadorNombre() {
+        return jugadorNombre;
+    }
+
+    public void setJugadorNombre(String jugadorNombre) {
+        this.jugadorNombre = jugadorNombre;
+    }
+    
+    
 
     public void setPuntos(int Puntos) {
         this.puntos = Puntos;
@@ -82,15 +162,6 @@ public class Juego {
 
     public boolean isJuegoTerminado() {
         return juegoTerminado;
-    }
-
-    public void defaultProblemas() {
-        for (int i = 0; i < 2; i++) {
-            problemasDeTipoSeleccion.add(new Problema());
-        }
-        for (int i = 0; i < 2; i++) {
-            ProblemasDeTipoPoner.add(new Problema());
-        }
     }
 
     public void AgregarProblemaDeSeleccion(int sumando1, char operandor, int sumando2, int respuesta) {

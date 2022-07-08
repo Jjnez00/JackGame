@@ -36,16 +36,14 @@ public class Ranking implements Serializable {
         while (elementos.size() > 5) {
             elementos.remove(elementos.size() - 1);
         }
+        salvarRanking();
     }
 
     public void cargarRanking() {
         try ( FileInputStream in = new FileInputStream("ranking.txt");  ObjectInputStream s = new ObjectInputStream(in)) {
             elementos = (List<Elemento>) s.readObject();
-            System.out.println("pepe");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException ex) {
-            Logger.getLogger(Ranking.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -7,6 +7,7 @@ package interfaz;
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import metodos.Juego;
 
 /**
  *
@@ -15,7 +16,6 @@ import javax.swing.event.DocumentListener;
 public class Registrar extends javax.swing.JPanel {
 
     private final JPanel c;
-    private String vacio = " ";
 
     /**
      * Creates new form Registrar
@@ -195,9 +195,11 @@ public class Registrar extends javax.swing.JPanel {
 
     private void BtnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAceptarMouseClicked
         // TODO add your handling code here:
-        if (!vacio.equalsIgnoreCase(nombre.getText())) {
+        if ("".equalsIgnoreCase(nombre.getText())) {
             BtnAceptar.setEnabled(false);
+            return;
         }
+        Juego.getInstancia().setJugadorNombre(nombre.getText());
         ModoDeJuego mj = new ModoDeJuego(c);
         page(mj, c);
     }//GEN-LAST:event_BtnAceptarMouseClicked

@@ -115,16 +115,17 @@ public class Acierto extends javax.swing.JPanel {
     }//GEN-LAST:event_continuarMouseExited
 
     private void continuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuarMouseClicked
-        // TODO add your handling code here:
         if (Juego.getInstancia().isJuegoTerminado()) {
-            // todo: enviar a ranking
+            Juego.getInstancia().terminarJuego();
             ModoRanking m = new ModoRanking(c);
             page(m, c);
-            
-            
         } else {
-            // todo: abrir Modo Correspondiente.java
-            ModoSelecionar ms = new ModoSelecionar(c);
+            JPanel ms;
+            if (Juego.getInstancia().getTipoJuego() == 0) {
+                ms = new ModoSelecionar(c);
+            } else {
+                ms = new ModoPoner(c);
+            }
             page(ms,c);
         }
     }//GEN-LAST:event_continuarMouseClicked

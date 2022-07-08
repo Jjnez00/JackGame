@@ -5,13 +5,14 @@
  */
 package metodos;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Josue
  */
-public class Problema {
+public class Problema implements Serializable {
 
     private int sumando1;
     private char operandor;

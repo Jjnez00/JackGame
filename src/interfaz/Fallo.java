@@ -116,13 +116,18 @@ public class Fallo extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (Juego.getInstancia().isJuegoTerminado()) {
             // todo: enviar a ranking
+            Juego.getInstancia().terminarJuego();
             ModoRanking m = new ModoRanking(c);
             Page(m, c);
             
         } else {
-            // todo: abrir ModoSeleccionar.java
-            ModoSelecionar m = new ModoSelecionar(c);
-            Page(m, c);
+            JPanel ms;
+            if (Juego.getInstancia().getTipoJuego() == 0) {
+                ms = new ModoSelecionar(c);
+            } else {
+                ms = new ModoPoner(c);
+            }
+            Page(ms,c);
         }
 
     }//GEN-LAST:event_continuarMouseClicked

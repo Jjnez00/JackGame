@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import metodos.Juego;
 
 /**
  *
@@ -151,12 +152,16 @@ public class ModoDeJuego extends javax.swing.JPanel {
     }//GEN-LAST:event_atrasMouseClicked
 
     private void fMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fMouseClicked
+        Juego.getInstancia().setTipoJuego(0);
+        Juego.getInstancia().iniciarGame();
         ModoSelecionar ms = new ModoSelecionar(c);
         page(ms, c);
     }//GEN-LAST:event_fMouseClicked
 
     private void fsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fsMouseClicked
         // TODO add your handling code here:
+        Juego.getInstancia().setTipoJuego(1);
+        Juego.getInstancia().iniciarGame();
         ModoPoner mp = new ModoPoner(c);
         page(mp, c);
         
